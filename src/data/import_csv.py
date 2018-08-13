@@ -26,7 +26,7 @@ def csv2sql (con, path, table_name, show_table = False, rows = 5):
     - row: number of rows to print if show_table
     """
     
-    df_raw_data = pd.read_csv(path) # empty values replaced with nan
+    df_raw_data = pd.read_csv(path, error_bad_lines = False) # empty values replaced with nan
     print('...read file to dataframe')
     df_raw_data.to_sql(table_name, con, if_exists='replace', index=False)
     print('...added to sql table')
@@ -37,29 +37,37 @@ def csv2sql (con, path, table_name, show_table = False, rows = 5):
         print(df_sql_output)    
     
     
+def csv2table (folder_path):
+    """
+    conver all csv files from one foler to tables in sqlite, table names same as file names
+    - foler path: folder for the csv files
+    output: tables in the specified database
+    """    
+    
+    
     
 #### Main ####     
 if __name__ == '__main__':
     
-    # query options
-    count_tour_match = True     # count matches played at each tourney
+    # sample query options
+    count_tour_match = False     # count matches played at each tourney
     cuont_surface_tour = False  # count tourney by surface
     
-    con = sqlite3.connect("TennisData.db", detect_types=sqlite3.PARSE_COLNAMES)  # making connection to sqlite
+    con = sqlite3.connect("TennisData.db", detect_types = sqlite3.PARSE_COLNAMES)  # making connection to sqlite
     cur = con.cursor()  # cursor    
     
-    file_path = '~/Projects/tennis_analytics/data/raw/atp_matches_2017.csv'
+    file_path = '~/Projects/tennis_analytics/data/raw/atp_matches/atp_matches_2017.csv'
     table = 'atp_2017'
     
     csv2sql(con, file_path, table) # load csv to sql table and show the first rows, run only once 
     
     
-    if count_tour_match:   # count matches played at each tourney
+    if count_tour_match:   # count matches played at each tourney in specified table
         
         sql_command = """ 
         SELECT tourney_name, 
                count(*) AS matches_per_tourney
-        FROM atp_2017
+        FROM atp_2017  
         GROUP BY tourney_name
         ORDER BY matches_per_tourney DESC
         """
