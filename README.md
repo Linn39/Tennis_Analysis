@@ -22,21 +22,21 @@ I counted the number of tournaments won by each player from 2008-2017, and plott
 
 <br>
 
-#### To try out SQLite commdands in Python, I converted csv to sqlite database and tried basic queries 
-<br>--> /src/data/
+#### To try out SQLite commdands in Python, I converted csv to sqlite database and tried basic queries <br\>
+--> /src/data/
 
 <br>
----
+
 ## Datasets
-#### “atp_matches_*.csv”: by Jeff Sackmann / Tennis Abstract, 
-<br> https://github.com/JeffSackmann/tennis_atp
+#### “atp_matches_*.csv”
+<br>by Jeff Sackmann / Tennis Abstract: https://github.com/JeffSackmann/tennis_atp
 
 The player file columns are player_id, first_name, last_name, hand, birth_date, country_code.
 The columns for the ranking files are ranking_date, ranking, player_id, ranking_points.
 
 <br>
----
+
 ## Folder Structure
 <br>The folder structure is based on the "Data Science" project template, created by the command line tool "Cookiecutter":
 <br>Ducumentation: http://drivendata.github.io/cookiecutter-data-science/
-<br>I highly recommend Cookiecutter. I find it very helpful for organizing projects, even when I am just starting a project with very little contents, I already have an idea of the overall structure. And it's easy for others to understand/ reproduce what I've done =)
+<br><br>I highly recommend Cookiecutter. I find it very helpful for organizing projects, even when I am just starting a project with very little contents, I already have an idea of the overall structure. And it's easy for others to understand/ reproduce what I've done =)
